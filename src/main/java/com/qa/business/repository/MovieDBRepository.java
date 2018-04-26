@@ -2,6 +2,7 @@ package com.qa.business.repository;
 
 import java.util.Collection;
 
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.*;
 import javax.transaction.Transactional;
@@ -13,7 +14,7 @@ import com.qa.util.JSONUtil;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 
 
-
+@Default
 public class MovieDBRepository implements iMovieRepository {
 
 	private static final Logger LOGGER = Logger.getLogger(MovieDBRepository.class);
