@@ -39,5 +39,12 @@ public class MovieEndpoint {
 		return service.createAMovie(jSON);
 	}
 	
+	@POST
+	@Path("/json/{id}")
+	@Produces( {"application/json"})
+	public String deleteAMovie (@PathParam("id") Long id) {
+		
+		return service.deleteAMovie(id);
+	}
 
 }
