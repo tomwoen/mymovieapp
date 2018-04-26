@@ -6,5 +6,7 @@ public interface iMovieRepository {
 	
 	String getAMovie(Long id);
 	
+	String createAMovie(String jSON);
+	
 
 }

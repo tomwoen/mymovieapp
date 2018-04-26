@@ -4,11 +4,15 @@ import java.util.Collection;
 
 import javax.inject.Inject;
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
 
 import com.qa.persistence.domain.Movie;
 import com.qa.util.JSONUtil;
+import static javax.transaction.Transactional.TxType.REQUIRED;
+
+
 
 public class MovieDBRepository implements iMovieRepository {
 
@@ -51,7 +55,15 @@ public class MovieDBRepository implements iMovieRepository {
 	private Movie findMovie(Long id) {
 		return manager.find(Movie.class, id);
 	}
-	
-	
+
+	@Override
+	@Transactional(REQUIRED)
+	public String createAMovie(String jSON) {
+		Movie newmovie = util.getObjectforJSON(jSON, Movie.class);
+		manager.persist(newmovie);
+		
+		return "{\"message\":\"movie added\"}";
+	}
+		
 
 }
