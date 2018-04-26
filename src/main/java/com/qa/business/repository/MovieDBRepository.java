@@ -84,6 +84,29 @@ public class MovieDBRepository implements iMovieRepository {
 			return "{\"message\":\"movie not found\"}";
 		}
 	}
+
+	@Override
+	@Transactional(REQUIRED)
+	public String updateMovie(Long id, String newJSON) {
+		
+		Movie oldmovie = findMovie(id);
+		Movie newmovie = util.getObjectforJSON(newJSON, Movie.class);
+		
+		if (oldmovie != null) {
+			
+			oldmovie = newmovie;
+			manager.merge(oldmovie);
+			
+		return "{\"message\":\"movie updated\"}";
+		
+		}
+		
+		else {
+			
+ 		return "{\"message\":\"movie not found\"}";
+ 		
+		}
+	}
 		
 
 }
