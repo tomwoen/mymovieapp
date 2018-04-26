@@ -21,5 +21,11 @@ public class MovieService implements iMovieService {
 		return repo.getAMovie(id);
 		
 	}
+	
+	@Override 
+	public String createAMovie(String jSON) {
+		
+		return repo.createAMovie(jSON);
+	}
 
 }
