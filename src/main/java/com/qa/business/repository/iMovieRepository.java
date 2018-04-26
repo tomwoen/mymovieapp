@@ -4,5 +4,7 @@ public interface iMovieRepository {
 	
 	String getAllMovies();
 	
+	String getAMovie(Long id);
+	
 
 }
